@@ -4,6 +4,7 @@ import "./App.css";
 import { Icon } from "leaflet";
 import trackData from "./testi_route.json";
 import { useEffect, useRef } from "react";
+import Modal from "./components/Modal";
 
 export default function App() {
   const [activePark, setActivePark] = useState(null);
