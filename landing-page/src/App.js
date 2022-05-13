@@ -12,10 +12,10 @@ export default function App() {
 
   useEffect(() => {
     setInterval(() => {
-      setPoint(intervalRef.current + 1);
-      intervalRef.current += 1;
       if (intervalRef.current >= trackData.features.length - 1)
         intervalRef.current = 0;
+      setPoint(intervalRef.current + 1);
+      intervalRef.current += 1;
     }, 1000);
   }, []);
 
