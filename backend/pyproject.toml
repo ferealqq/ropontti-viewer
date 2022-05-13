@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "backend"
+version = "0.1.0"
+description = ""
+authors = ["ferealqq <pekka.mattinen@webso.fi>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+fastapi = "^0.77.1"
+uvicorn = {extras = ["standard"], version = "^0.17.6"}
+Flask = "^2.1.2"
+aiohttp = "^3.8.1"
+opencv-python = "^4.5.5"
+numpy = "^1.22.3"
+
+[tool.poetry.dev-dependencies]
+    
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
