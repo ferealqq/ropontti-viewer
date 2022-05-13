@@ -13,7 +13,7 @@ export default function TemporaryDrawer({ drawerOpen }) {
 
   React.useEffect(() => {
     console.log("useeffect called");
-    toggleDrawer("right", true);
+    toggleDrawer("right", true)();
   }, [drawerOpen]);
 
   const toggleDrawer = (anchor, open) => (event) => {
