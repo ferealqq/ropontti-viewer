@@ -14,6 +14,8 @@ export default function App() {
     setInterval(() => {
       setPoint(intervalRef.current + 1);
       intervalRef.current += 1;
+      if (intervalRef.current >= trackData.features.length - 1)
+        intervalRef.current = 0;
     }, 1000);
   }, []);
 
