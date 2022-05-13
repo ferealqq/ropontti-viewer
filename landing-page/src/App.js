@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "./App.css";
 import { Icon } from "leaflet";
+import trackData from "./testi_route.json";
+import { useEffect, useRef } from "react";
 
 const parkData = {
   features: [
@@ -35,24 +37,39 @@ const parkData = {
 
 export default function App() {
   const [activePark, setActivePark] = useState(null);
+  const [point, setPoint] = useState(1);
+  const intervalRef = useRef(0);
+
+  useEffect(() => {
+    setInterval(() => {
+      setPoint(intervalRef.current + 1);
+      intervalRef.current += 1;
+    }, 1000);
+  }, []);
+
   return (
-    <MapContainer center={[45.4, -75.7]} zoom={12} scrollWheelZoom={false}>
+    <MapContainer
+      center={[
+        trackData.features[point].geometry.coordinates[1],
+        trackData.features[point].geometry.coordinates[0],
+      ]}
+      zoom={30}
+      scrollWheelZoom={false}
+    >
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       />
-      {parkData.features.map((park) => (
-        <Marker
-          key={park.properties.PARK_ID}
-          position={[
-            park.geometry.coordinates[1],
-            park.geometry.coordinates[0],
-          ]}
-          onClick={() => {
-            setActivePark(park);
-          }}
-        />
-      ))}
+      <Marker
+        key={"park.properties.PARK_ID"}
+        position={[
+          trackData.features[point].geometry.coordinates[1],
+          trackData.features[point].geometry.coordinates[0],
+        ]}
+        onClick={() => {
+          setActivePark("park");
+        }}
+      />
     </MapContainer>
   );
 }
