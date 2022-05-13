@@ -22,7 +22,7 @@ def after_request(response):
 
 
 def get_chunk(byte1=None, byte2=None):
-    full_path = "kissa.mp4"
+    full_path = "dallaus.mp4"
     file_size = os.stat(full_path).st_size
     start = 0
     
