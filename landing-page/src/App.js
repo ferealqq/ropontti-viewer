@@ -6,6 +6,7 @@ import trackData from "./testi_route.json";
 import { useEffect, useRef } from "react";
 import SwipeableEdgeDrawer from "./Swipe";
 import TemporaryDrawer from "./Drawer";
+import Modal from "./components/Modal";
 
 export default function App() {
   const [sideBarOpen, setSideBarOpen] = useState(false);
