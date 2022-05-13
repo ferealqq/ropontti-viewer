@@ -4,6 +4,10 @@ import osoite from "../assets/osoitteet.json";
 import nimet from "../assets/nimet.json";
 import songs from "../assets/songs.json";
 
+
+const handleClick = () => {
+    window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank");
+}
 const Modal = (props) => {
     const [order, SetOrder] = useState(null);
     const [destination, SetDestination] = useState(null);
@@ -40,7 +44,7 @@ const Modal = (props) => {
                     </div>
                 )
             })}
-            <button>
+            <button onClick={handleClick()}>
                 Avaa stream
             </button>
         </div>
