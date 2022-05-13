@@ -1,5 +1,7 @@
 import React from "react";
 import { Nav } from "react-bootstrap";
+import Modal from "./components/Modal";
+
 import "./App.css";
 
 const Sidebar = (props) => {

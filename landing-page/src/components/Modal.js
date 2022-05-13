@@ -44,7 +44,7 @@ const Modal = (props) => {
                     </div>
                 )
             })}
-            <button onClick={handleClick()}>
+            <button onClick={() => handleClick()}>
                 Avaa stream
             </button>
         </div>

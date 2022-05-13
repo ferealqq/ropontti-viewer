@@ -2,6 +2,7 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
+import Modal from "./components/Modal";
 
 export default function TemporaryDrawer({ drawerOpen }) {
   const [state, setState] = React.useState({
@@ -31,7 +32,7 @@ export default function TemporaryDrawer({ drawerOpen }) {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <p>test</p>
+      <Modal />
     </Box>
   );
 
