@@ -1,7 +1,6 @@
 import React, { useState, Button, useContext } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "./App.css";
-import { Icon } from "leaflet";
 import trackData from "./testi_route.json";
 import { useEffect, useRef } from "react";
 import SwipeableEdgeDrawer from "./Swipe";
@@ -13,6 +12,7 @@ import songs from "./assets/songs.json";
 import { createContext } from "react";
 import Stream from "./Stream";
 import { Container, CssBaseline } from "@mui/material";
+import {  iconPerson  } from './Icon';
 
 export const roponttiContext = createContext();
 
@@ -68,12 +68,14 @@ export default function App() {
         zoom={30}
         scrollWheelZoom={false}
       >
+
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
         <Marker
           key={"park.properties.PARK_ID"}
+	  icon={ iconPerson }
           position={[
             trackData.features[point].geometry.coordinates[1],
             trackData.features[point].geometry.coordinates[0],
