@@ -14,7 +14,7 @@ export default function TemporaryDrawer({ drawerOpen }) {
 
   React.useEffect(() => {
     console.log("useeffect called");
-    toggleDrawer("right", true)();
+    toggleDrawer("right", drawerOpen)();
   }, [drawerOpen]);
 
   const toggleDrawer = (anchor, open) => (event) => {
@@ -27,7 +27,7 @@ export default function TemporaryDrawer({ drawerOpen }) {
 
   const list = (anchor) => (
     <Box
-      sx={{ width: 500 }}
+      sx={{ width: "50%" }}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
