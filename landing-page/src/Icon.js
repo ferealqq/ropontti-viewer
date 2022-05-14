@@ -9,7 +9,7 @@ const iconPerson = new L.Icon({
     shadowUrl: null,
     shadowSize: null,
     shadowAnchor: null,
-    iconSize: new L.Point(100, 100),
+    iconSize: new L.Point(50, 50),
 });
 
 export { iconPerson };
