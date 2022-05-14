@@ -7,6 +7,7 @@ import { Divider } from "@mui/material";
 import Stream from "../Stream";
 import Item from "./Item";
 import _ from "lodash";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const Modal = (props) => {
   const {
@@ -78,6 +79,15 @@ const Modal = (props) => {
       style={{ width: "100%" }}
     >
       <Grid item>
+        <Button
+          style={{ margin: 10 }}
+          onClick={() => props.backButtonPress()}
+          variant="outlined"
+        >
+          <ArrowBackIcon />
+          Takaisin
+        </Button>
+
         <Stream startTime={time} />
         <Item item={`Nimi: ${name}`} />
         <Divider />
@@ -91,13 +101,6 @@ const Modal = (props) => {
             return <Item item={item} avatar={true} key={item} />;
           })}
         </List>
-        <Button
-          style={{ margin: 10 }}
-          onClick={() => props.backButtonPress()}
-          variant="outlined"
-        >
-          Takaisin
-        </Button>
       </Grid>
     </Grid>
   );
