@@ -14,7 +14,28 @@ export default function Stream({ startTime = 0 }) {
       video.current.currentTime = startTime;
     });
   }, []);
+  console.log(chosenOne);
+  if(video.current !== null && video.current.currentTime !== null) {
+    console.log(video.current.currentTime);
+  
+  if(chosenOne === 1 && video.current.currentTime > 515) {
+    video.current.src = `https://ropontti.s3.eu-central-1.amazonaws.com/Ropontti-2.mp4`;;
+    video.current.play().then(() => {
+      video.current.currentTime = 0;
+    });
+  } else if (chosenOne === 2 && video.current.currentTime > 515) {
 
+    video.current.src = `https://ropontti.s3.eu-central-1.amazonaws.com/Ropontti-3.mp4`;;
+    video.current.play().then(() => {
+      video.current.currentTime = 0;
+    });
+  } else if (chosenOne === 3 && video.current.currentTime > 515) {
+    video.current.src = `https://ropontti.s3.eu-central-1.amazonaws.com/Ropontti-1.mp4`;;
+    video.current.play().then(() => {
+      video.current.currentTime = 0;
+    });
+  }
+}
   if (chosenOne > 3) return <p> Not found </p>;
 
   return (
