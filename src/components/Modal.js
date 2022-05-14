@@ -53,7 +53,7 @@ const Modal = (props) => {
       setTime(time3);
     }
   }, [chosenOne]);
-
+  
   if (
     order === null ||
     destination === null ||

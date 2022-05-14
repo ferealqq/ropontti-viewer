@@ -15,16 +15,22 @@ import Stream from "./Stream";
 import { Container, CssBaseline } from "@mui/material";
 import {  iconPerson  } from './Icon';
 
+var today = new Date();
 export const roponttiContext = createContext();
 
 export default function App() {
   const [sideBarOpen, setSideBarOpen] = useState(false);
   const [chosenOne, setChosenOne] = useState(false);
 
+  // console.log(today.getMinutes());
+  // console.log(today.getSeconds());
+  // console.log(trackData.features.length);
+
+  // console.log((today.getMinutes() * 60 + today.getSeconds()) % trackData.features.length);
 
   const [point1, setPoint1] = useState(1);
-  const [point2, setPoint2] = useState(520);
-  const [point3, setPoint3] = useState(1020);
+  const [point2, setPoint2] = useState(515);
+  const [point3, setPoint3] = useState(1060);
 
 
   const [time1, setTime1] = useState(0);
@@ -99,8 +105,8 @@ export default function App() {
         intervalRef.current = 0;
 
       setPoint1(intervalRef.current + 1);
-      setPoint2(point2 < trackData.features.length ? intervalRef.current + 520 : 0);
-      setPoint3(point3 < trackData.features.length ? intervalRef.current + 1020 : 0);
+      setPoint2(point2 < trackData.features.length ? intervalRef.current + 515 : 0);
+      setPoint3(point3 < trackData.features.length ? intervalRef.current + 1060 : 0);
       intervalRef.current += 1;
       setTime1(intervalRef.current);
       setTime2(intervalRef.current);
