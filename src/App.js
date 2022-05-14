@@ -1,21 +1,17 @@
-import React, { useState, Button, useContext } from "react";
-import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+import React, { useState } from "react";
+import { MapContainer, TileLayer, Marker  } from "react-leaflet";
 import "./App.css";
-import { Icon } from "leaflet";
 import trackData from "./route_points_all.json";
 import { useEffect, useRef } from "react";
-import SwipeableEdgeDrawer from "./Swipe";
 import TemporaryDrawer from "./Drawer";
 import lista from "./assets/kauppalistat.json";
 import osoite from "./assets/osoitteet.json";
 import nimet from "./assets/nimet.json";
 import songs from "./assets/songs.json";
 import { createContext } from "react";
-import Stream from "./Stream";
-import { Container, CssBaseline } from "@mui/material";
+import { CssBaseline } from "@mui/material";
 import {  iconPerson  } from './Icon';
 
-var today = new Date();
 export const roponttiContext = createContext();
 
 export default function App() {

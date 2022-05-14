@@ -17,10 +17,6 @@ export default function TemporaryDrawer({ drawerOpen, onClose }) {
   }, [drawerOpen]);
 
   const toggleDrawer = (anchor, open) => (event) => {
-    // if (false && (event.key === "Tab" || event.key === "Shift")) {
-    //   return;
-    // }
-
     setState({ ...state, [anchor]: open });
   };
 
