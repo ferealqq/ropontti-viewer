@@ -15,11 +15,13 @@ export default function Stream({ startTime = 0, roponttiNumber }) {
 
   return (
     <video
-      controls={true}
+      style={{ objectFit: "cover", width: "100%" }}
+      controls={false}
       muted={true}
       autoPlay={true}
       playsInline={true}
       ref={video}
-    ></video>
+    >
+    </video>
   );
 }

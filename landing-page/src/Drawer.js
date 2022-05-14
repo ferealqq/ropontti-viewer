@@ -4,7 +4,7 @@ import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
 import Modal from "./components/Modal";
 
-export default function TemporaryDrawer({ drawerOpen }) {
+export default function TemporaryDrawer({ drawerOpen, onClose }) {
   const [state, setState] = React.useState({
     top: false,
     left: false,
@@ -13,7 +13,6 @@ export default function TemporaryDrawer({ drawerOpen }) {
   });
 
   React.useEffect(() => {
-    console.log("useeffect called");
     toggleDrawer("right", drawerOpen)();
   }, [drawerOpen]);
 
@@ -27,26 +26,29 @@ export default function TemporaryDrawer({ drawerOpen }) {
 
   const list = (anchor) => (
     <Box
-      sx={{ width: "50%" }}
+      sx={{ width: "100%" }}
       role="presentation"
-      onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <Modal />
+      <Modal
+        backButtonPress={() => {
+          toggleDrawer(anchor, false)();
+          onClose();
+        }}
+      />
     </Box>
   );
 
   return (
-    <div>
-      <React.Fragment key={"right"}>
-        <Drawer
-          anchor={"right"}
-          open={state["right"]}
-          onClose={toggleDrawer("right", false)}
-        >
-          {list("right")}
-        </Drawer>
-      </React.Fragment>
-    </div>
+    <Drawer
+      anchor={"right"}
+      open={state["right"]}
+      onClose={() => {
+        toggleDrawer("right", false);
+        onClose();
+      }}
+    >
+      {list("right")}
+    </Drawer>
   );
 }
