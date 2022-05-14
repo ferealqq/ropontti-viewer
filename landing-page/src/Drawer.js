@@ -30,7 +30,12 @@ export default function TemporaryDrawer({ drawerOpen, onClose }) {
       role="presentation"
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <Modal backButtonPress={toggleDrawer(anchor, false)} />
+      <Modal
+        backButtonPress={() => {
+          toggleDrawer(anchor, false)();
+          onClose();
+        }}
+      />
     </Box>
   );
 
