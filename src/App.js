@@ -21,13 +21,6 @@ export const roponttiContext = createContext();
 export default function App() {
   const [sideBarOpen, setSideBarOpen] = useState(false);
   const [chosenOne, setChosenOne] = useState(false);
-
-  // console.log(today.getMinutes());
-  // console.log(today.getSeconds());
-  // console.log(trackData.features.length);
-
-  // console.log((today.getMinutes() * 60 + today.getSeconds()) % trackData.features.length);
-
   const [point1, setPoint1] = useState(1);
   const [point2, setPoint2] = useState(515);
   const [point3, setPoint3] = useState(1060);
@@ -138,7 +131,8 @@ export default function App() {
         />
         <Marker
           key={"Ropontti1"}
-	  icon={ iconPerson }
+	        icon={ iconPerson }
+          
           position={[
             trackData.features[point1].geometry.coordinates[1],
             trackData.features[point1].geometry.coordinates[0],
@@ -152,7 +146,7 @@ export default function App() {
         ></Marker>
         <Marker
           key={"ropontti2"}
-	  icon={ iconPerson }
+	        icon={ iconPerson }
           position={[
             trackData.features[point2].geometry.coordinates[1],
             trackData.features[point2].geometry.coordinates[0],
