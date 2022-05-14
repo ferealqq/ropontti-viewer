@@ -9,10 +9,6 @@ const Modal = (props) => {
   const handleClick = () => {
     setStream(true);
   };
-  // console.log(order);
-  // console.log(destination);
-  // console.log(name);
-  // console.log(song);
   if (
     order === null ||
     destination === null ||
@@ -34,8 +30,7 @@ const Modal = (props) => {
       {order.map((item) => {
         return <div key={item}>{item}</div>;
       })}
-      {/* <Stream startTime={time}/> */}
-      <Stream startTime={130} />
+      <Stream startTime={time} roponttiNumber={1} />
     </div>
   );
 };

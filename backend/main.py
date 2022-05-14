@@ -21,8 +21,7 @@ def after_request(response):
     return response
 
 
-def get_chunk(byte1=None, byte2=None):
-    full_path = "dallaus.mp4"
+def get_chunk(full_path, byte1=None, byte2=None):
     file_size = os.stat(full_path).st_size
     start = 0
     
@@ -38,9 +37,7 @@ def get_chunk(byte1=None, byte2=None):
         chunk = f.read(length)
     return chunk, start, length, file_size
 
-
-@app.route('/video')
-def get_file():
+def get_byte_range():
     range_header = request.headers.get('Range', None)
     byte1, byte2 = 0, None
     if range_header:
@@ -51,12 +48,26 @@ def get_file():
             byte1 = int(groups[0])
         if groups[1]:
             byte2 = int(groups[1])
-       
-    chunk, start, length, file_size = get_chunk(byte1, byte2)
+    
+    return byte1, byte2
+
+def video_response(chunk, start, length, file_size):
     resp = Response(chunk, 206, mimetype='video/mp4',
                       content_type='video/mp4', direct_passthrough=True)
     resp.headers.add('Content-Range', 'bytes {0}-{1}/{2}'.format(start, start + length - 1, file_size))
     return resp
+
+@app.route('/stream/1')
+def get_stream_1():
+    return video_response(*get_chunk("dallaus.mp4",*get_byte_range()))
+
+@app.route('/stream/2')
+def get_stream_2():
+    return video_response(*get_chunk("dallaus.mp4",*get_byte_range()))
+
+@app.route('/stream/3')
+def get_stream_3():
+    return video_response(*get_chunk("dallaus.mp4",*get_byte_range()))
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080, debug=True, threaded=True)
