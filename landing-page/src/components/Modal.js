@@ -1,26 +1,13 @@
-import React, { useState, useEffect } from "react";
-import lista from "../assets/kauppalistat.json";
-import osoite from "../assets/osoitteet.json";
-import nimet from "../assets/nimet.json";
-import songs from "../assets/songs.json";
+import React, { useState, useEffect, useContext,createContext} from "react";
+import {roponttiContext} from '../App';
 
 
-const handleClick = () => {
-    window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank");
-}
 const Modal = (props) => {
-    const [order, SetOrder] = useState(null);
-    const [destination, SetDestination] = useState(null);
-    const [name, SetName] = useState(null);
-    const [song, SetSong] = useState(null);
-    useEffect(() => {
-        SetOrder(lista.lista[(Math.floor(Math.random() * Object.keys(lista.lista).length))]);
-        SetDestination(osoite.osoite[Math.floor(Math.random() * Object.keys(osoite.osoite).length)]);
-        SetName(nimet.names[Math.floor(Math.random() * Object.keys(nimet.names).length)]);
-        SetSong(songs.songs[Math.floor(Math.random() * Object.keys(songs.songs).length)]);
+    const { order, destination, name, song, setStream } = useContext(roponttiContext);
 
-    },[]);
-    
+    const handleClick = () => {
+        setStream(true);
+    }
     // console.log(order);
     // console.log(destination);
     // console.log(name);

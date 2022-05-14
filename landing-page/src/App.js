@@ -1,4 +1,4 @@
-import React, { useState, Button } from "react";
+import React, { useState, Button, useContext } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "./App.css";
 import { Icon } from "leaflet";
@@ -6,12 +6,36 @@ import trackData from "./testi_route.json";
 import { useEffect, useRef } from "react";
 import SwipeableEdgeDrawer from "./Swipe";
 import TemporaryDrawer from "./Drawer";
+import lista from "./assets/kauppalistat.json";
+import osoite from "./assets/osoitteet.json";
+import nimet from "./assets/nimet.json";
+import songs from "./assets/songs.json";
+import { createContext } from "react";
+import Stream from "./Stream";
+
+export const roponttiContext = createContext();
 
 export default function App() {
   const [sideBarOpen, setSideBarOpen] = useState(false);
   const [activePark, setActivePark] = useState(null);
   const [point, setPoint] = useState(1);
+  const [time, setTime] = useState(0);
   const intervalRef = useRef(0);
+
+  const [order, setOrder] = useState(null);
+  const [destination, setDestination] = useState(null);
+  const [name, setName] = useState(null);
+  const [song, setSong] = useState(null);
+  const [stream, setStream] = useState(false);
+
+
+  useEffect(() => {
+      setOrder(lista.lista[(Math.floor(Math.random() * Object.keys(lista.lista).length))]);
+      setDestination(osoite.osoite[Math.floor(Math.random() * Object.keys(osoite.osoite).length)]);
+      setName(nimet.names[Math.floor(Math.random() * Object.keys(nimet.names).length)]);
+      setSong(songs.songs[Math.floor(Math.random() * Object.keys(songs.songs).length)]);
+  
+  },[]);
 
   useEffect(() => {
     setInterval(() => {
@@ -22,8 +46,14 @@ export default function App() {
     }, 1000);
   }, []);
 
+  if(stream){
+    return(
+        <Stream startTime={intervalRef.current}/>
+    )
+  }
   return (
     <>
+    <roponttiContext.Provider value={{order, destination, name, song, setStream}}>
       <TemporaryDrawer drawerOpen={sideBarOpen} />
       <MapContainer
         center={[
@@ -50,6 +80,7 @@ export default function App() {
           }}
         ></Marker>
       </MapContainer>
-    </>
+      </roponttiContext.Provider>
+      </>
   );
 }
