@@ -59,7 +59,12 @@ export default function App() {
   return (
     <roponttiContext.Provider value={{ order, destination, name, song, time }}>
       <CssBaseline />
-      <TemporaryDrawer drawerOpen={sideBarOpen} />
+      <TemporaryDrawer
+        onClose={() => {
+          setSideBarOpen(false);
+        }}
+        drawerOpen={sideBarOpen}
+      />
       <MapContainer
         center={[
           trackData.features[point].geometry.coordinates[1],

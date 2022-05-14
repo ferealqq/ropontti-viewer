@@ -4,7 +4,7 @@ import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
 import Modal from "./components/Modal";
 
-export default function TemporaryDrawer({ drawerOpen }) {
+export default function TemporaryDrawer({ drawerOpen, onClose }) {
   const [state, setState] = React.useState({
     top: false,
     left: false,
@@ -13,7 +13,6 @@ export default function TemporaryDrawer({ drawerOpen }) {
   });
 
   React.useEffect(() => {
-    console.log("useeffect called");
     toggleDrawer("right", drawerOpen)();
   }, [drawerOpen]);
 
@@ -39,7 +38,10 @@ export default function TemporaryDrawer({ drawerOpen }) {
     <Drawer
       anchor={"right"}
       open={state["right"]}
-      onClose={toggleDrawer("right", false)}
+      onClose={() => {
+        toggleDrawer("right", false);
+        onClose();
+      }}
     >
       {list("right")}
     </Drawer>
