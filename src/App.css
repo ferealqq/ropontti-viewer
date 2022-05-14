@@ -36,5 +36,14 @@
   width: 100%;
 }
 
-.item {
+/* FIXME Media query */
+.stream-video,
+.stream-loader {
+  object-fit: cover;
+  width: 600px;
+  height: auto;
+}
+
+.stream-loader {
+  justify-content: center;
 }

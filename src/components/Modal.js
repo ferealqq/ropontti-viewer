@@ -53,8 +53,7 @@ const Modal = (props) => {
       setTime(time3);
     }
   }, [chosenOne]);
-  
-  console.log(time);
+
   if (
     order === null ||
     destination === null ||
@@ -62,11 +61,11 @@ const Modal = (props) => {
     song === null ||
     time === null
   ) {
-    return(
-        <div>
-            <h1>Loading...</h1>
-        </div>
-    )
+    return (
+      <div>
+        <h1>Loading...</h1>
+      </div>
+    );
   }
 
   return (
@@ -89,7 +88,6 @@ const Modal = (props) => {
         <Item item={`Tilaus:`} />
         <List sx={{ width: "100%", bgcolor: "background.paper" }}>
           {order.map((item) => {
-            // console.log(item);
             return <Item item={item} avatar={true} key={item} />;
           })}
         </List>
