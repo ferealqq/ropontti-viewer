@@ -121,7 +121,7 @@ export default function App() {
           trackData.features[point1].geometry.coordinates[1],
           trackData.features[point1].geometry.coordinates[0],
         ]}
-        zoom={30}
+        zoom={16}
         scrollWheelZoom={false}
       >
         <TileLayer
