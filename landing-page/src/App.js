@@ -132,6 +132,7 @@ export default function App() {
         />
         <Marker
           key={"Ropontti1"}
+	  icon={ iconPerson }
           position={[
             trackData.features[point1].geometry.coordinates[1],
             trackData.features[point1].geometry.coordinates[0],
@@ -145,6 +146,7 @@ export default function App() {
         ></Marker>
         <Marker
           key={"ropontti2"}
+	  icon={ iconPerson }
           position={[
             trackData.features[point2].geometry.coordinates[1],
             trackData.features[point2].geometry.coordinates[0],
@@ -158,6 +160,7 @@ export default function App() {
         ></Marker>
         <Marker
           key={"ropontti3"}
+	  icon={ iconPerson }
           position={[
             trackData.features[point3].geometry.coordinates[1],
             trackData.features[point3].geometry.coordinates[0],
