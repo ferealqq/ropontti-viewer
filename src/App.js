@@ -15,22 +15,24 @@ import Stream from "./Stream";
 import { Container, CssBaseline } from "@mui/material";
 import {  iconPerson  } from './Icon';
 
+var today = new Date();
 export const roponttiContext = createContext();
 
 export default function App() {
   const [sideBarOpen, setSideBarOpen] = useState(false);
   const [chosenOne, setChosenOne] = useState(false);
 
+  var start = (today.getMinutes() * 60 + today.getSeconds()) % trackData.features.length;
 
-  const [point1, setPoint1] = useState(1);
-  const [point2, setPoint2] = useState(520);
-  const [point3, setPoint3] = useState(1020);
+  const [point1, setPoint1] = useState(start);
+  const [point2, setPoint2] = useState((start + 515) % trackData.features.length);
+  const [point3, setPoint3] = useState((start + 1060) % trackData.features.length);
 
 
   const [time1, setTime1] = useState(0);
   const [time2, setTime2] = useState(0);
   const [time3, setTime3] = useState(0);
-  const intervalRef = useRef(0);
+  const intervalRef = useRef(start % trackData.features.length);
 
   const [order1, setOrder1] = useState(null);
   const [destination1, setDestination1] = useState(null);
@@ -99,8 +101,8 @@ export default function App() {
         intervalRef.current = 0;
 
       setPoint1(intervalRef.current + 1);
-      setPoint2(point2 < trackData.features.length ? intervalRef.current + 520 : 0);
-      setPoint3(point3 < trackData.features.length ? intervalRef.current + 1020 : 0);
+      setPoint2(point2 < trackData.features.length ? intervalRef.current + 515 : 0);
+      setPoint3(point3 < trackData.features.length ? intervalRef.current + 515 + 545 : 0);
       intervalRef.current += 1;
       setTime1(intervalRef.current);
       setTime2(intervalRef.current);

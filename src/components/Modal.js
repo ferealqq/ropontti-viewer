@@ -54,7 +54,6 @@ const Modal = (props) => {
     }
   }, [chosenOne]);
   
-  console.log(time);
   if (
     order === null ||
     destination === null ||

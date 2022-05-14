@@ -15,7 +15,6 @@ export default function Stream({ startTime = 0 }) {
     });
   }, []);
   if(video.current !== null && video.current.currentTime !== null) {
-    console.log(video.current.currentTime);
   if(chosenOne === 1 && video.current.currentTime > 515) {
     video.current.src = `https://ropontti.s3.eu-central-1.amazonaws.com/Ropontti-2.mp4`;;
     video.current.play().then(() => {
