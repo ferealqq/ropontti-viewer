@@ -99,12 +99,12 @@ export default function App() {
         intervalRef.current = 0;
 
       setPoint1(intervalRef.current + 1);
-      setPoint2(point2 < 1448 ? intervalRef.current + 520 : 0);
-      setPoint3(point3 < 1448 ? intervalRef.current + 1020 : 0);
+      setPoint2(point2 < trackData.features.length ? intervalRef.current + 520 : 0);
+      setPoint3(point3 < trackData.features.length ? intervalRef.current + 1020 : 0);
       intervalRef.current += 1;
       setTime1(intervalRef.current);
-      setTime2(intervalRef.current + 520);
-      setTime3(intervalRef.current + 1020);
+      setTime2(time2 < trackData.features.length ? intervalRef.current + 520 : 0);
+      setTime3(time3 < trackData.features.length ? intervalRef.current + 1020 : 0);
     }, 1000);
   }, []);
 
