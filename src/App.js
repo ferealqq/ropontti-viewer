@@ -22,17 +22,21 @@ export default function App() {
   const [sideBarOpen, setSideBarOpen] = useState(false);
   const [chosenOne, setChosenOne] = useState(false);
 
-  var start = (today.getMinutes() * 60 + today.getSeconds()) % trackData.features.length;
+  // console.log(today.getMinutes());
+  // console.log(today.getSeconds());
+  // console.log(trackData.features.length);
 
-  const [point1, setPoint1] = useState(start);
-  const [point2, setPoint2] = useState((start + 515) % trackData.features.length);
-  const [point3, setPoint3] = useState((start + 1060) % trackData.features.length);
+  // console.log((today.getMinutes() * 60 + today.getSeconds()) % trackData.features.length);
+
+  const [point1, setPoint1] = useState(1);
+  const [point2, setPoint2] = useState(515);
+  const [point3, setPoint3] = useState(1060);
 
 
   const [time1, setTime1] = useState(0);
   const [time2, setTime2] = useState(0);
   const [time3, setTime3] = useState(0);
-  const intervalRef = useRef(start % trackData.features.length);
+  const intervalRef = useRef(0);
 
   const [order1, setOrder1] = useState(null);
   const [destination1, setDestination1] = useState(null);
@@ -102,7 +106,7 @@ export default function App() {
 
       setPoint1(intervalRef.current + 1);
       setPoint2(point2 < trackData.features.length ? intervalRef.current + 515 : 0);
-      setPoint3(point3 < trackData.features.length ? intervalRef.current + 515 + 545 : 0);
+      setPoint3(point3 < trackData.features.length ? intervalRef.current + 1060 : 0);
       intervalRef.current += 1;
       setTime1(intervalRef.current);
       setTime2(intervalRef.current);
