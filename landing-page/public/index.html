@@ -16,6 +16,19 @@
       integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
       crossorigin=""
     />
+    <link
+      type="video/mp4"
+      rel="preload"
+      as="video"
+      href="http://localhost:8080/video"
+    />
+    <link
+      type="video/mp4"
+      rel="preload"
+      as="fetch"
+      href="http://localhost:8080/video"
+    />
+
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -34,6 +47,18 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <!-- <video id="video" controls></video>
+
+    <script>
+      // Later on, after some condition has been met, set video source to the
+      // preloaded video URL.
+      const video = document.getElementById("video");
+      video.src = "http://localhost:8080/video";
+      video.play().then(() => {
+        console.log("have preload yes? no?");
+        // If preloaded video URL was already cached, playback started immediately.
+      });
+    </script> -->
     <div id="root"></div>
     <!--
       This HTML file is a template.
