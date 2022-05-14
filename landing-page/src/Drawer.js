@@ -27,26 +27,21 @@ export default function TemporaryDrawer({ drawerOpen }) {
 
   const list = (anchor) => (
     <Box
-      sx={{ width: 700 }}
+      sx={{ width: "100%" }}
       role="presentation"
-      onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <Modal />
+      <Modal backButtonPress={toggleDrawer(anchor, false)} />
     </Box>
   );
 
   return (
-    <div>
-      <React.Fragment key={"right"}>
-        <Drawer
-          anchor={"right"}
-          open={state["right"]}
-          onClose={toggleDrawer("right", false)}
-        >
-          {list("right")}
-        </Drawer>
-      </React.Fragment>
-    </div>
+    <Drawer
+      anchor={"right"}
+      open={state["right"]}
+      onClose={toggleDrawer("right", false)}
+    >
+      {list("right")}
+    </Drawer>
   );
 }
