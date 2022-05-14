@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useContext,createContext} from "react";
 import {roponttiContext} from '../App';
+import Stream from "../Stream";
 
 
 const Modal = (props) => {
-    const { order, destination, name, song, setStream } = useContext(roponttiContext);
+    const { order, destination, name, song, setStream, time} = useContext(roponttiContext);
 
     const handleClick = () => {
         setStream(true);
@@ -31,9 +32,7 @@ const Modal = (props) => {
                     </div>
                 )
             })}
-            <button onClick={() => handleClick()}>
-                Avaa stream
-            </button>
+            <Stream startTime={time}/>
         </div>
     )
 }

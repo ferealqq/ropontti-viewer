@@ -43,17 +43,13 @@ export default function App() {
         intervalRef.current = 0;
       setPoint(intervalRef.current + 1);
       intervalRef.current += 1;
+      setTime(intervalRef.current);
     }, 1000);
   }, []);
 
-  if(stream){
-    return(
-        <Stream startTime={intervalRef.current}/>
-    )
-  }
   return (
     <>
-    <roponttiContext.Provider value={{order, destination, name, song, setStream}}>
+    <roponttiContext.Provider value={{order, destination, name, song, time}}>
       <TemporaryDrawer drawerOpen={sideBarOpen} />
       <MapContainer
         center={[
