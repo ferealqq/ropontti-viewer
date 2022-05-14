@@ -12,6 +12,7 @@ import nimet from "./assets/nimet.json";
 import songs from "./assets/songs.json";
 import { createContext } from "react";
 import Stream from "./Stream";
+import { Container, CssBaseline } from "@mui/material";
 
 export const roponttiContext = createContext();
 
@@ -28,14 +29,22 @@ export default function App() {
   const [song, setSong] = useState(null);
   const [stream, setStream] = useState(false);
 
-
   useEffect(() => {
-      setOrder(lista.lista[(Math.floor(Math.random() * Object.keys(lista.lista).length))]);
-      setDestination(osoite.osoite[Math.floor(Math.random() * Object.keys(osoite.osoite).length)]);
-      setName(nimet.names[Math.floor(Math.random() * Object.keys(nimet.names).length)]);
-      setSong(songs.songs[Math.floor(Math.random() * Object.keys(songs.songs).length)]);
-  
-  },[]);
+    setOrder(
+      lista.lista[Math.floor(Math.random() * Object.keys(lista.lista).length)]
+    );
+    setDestination(
+      osoite.osoite[
+        Math.floor(Math.random() * Object.keys(osoite.osoite).length)
+      ]
+    );
+    setName(
+      nimet.names[Math.floor(Math.random() * Object.keys(nimet.names).length)]
+    );
+    setSong(
+      songs.songs[Math.floor(Math.random() * Object.keys(songs.songs).length)]
+    );
+  }, []);
 
   useEffect(() => {
     setInterval(() => {
@@ -48,8 +57,8 @@ export default function App() {
   }, []);
 
   return (
-    <>
-    <roponttiContext.Provider value={{order, destination, name, song, time}}>
+    <roponttiContext.Provider value={{ order, destination, name, song, time }}>
+      <CssBaseline />
       <TemporaryDrawer drawerOpen={sideBarOpen} />
       <MapContainer
         center={[
@@ -76,7 +85,6 @@ export default function App() {
           }}
         ></Marker>
       </MapContainer>
-      </roponttiContext.Provider>
-      </>
+    </roponttiContext.Provider>
   );
 }
