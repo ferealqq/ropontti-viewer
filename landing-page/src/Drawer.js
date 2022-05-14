@@ -27,7 +27,7 @@ export default function TemporaryDrawer({ drawerOpen }) {
 
   const list = (anchor) => (
     <Box
-      sx={{ width: "50%" }}
+      sx={{ width: 700 }}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
