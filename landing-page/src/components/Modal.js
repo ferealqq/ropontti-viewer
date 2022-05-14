@@ -27,11 +27,11 @@ const Modal = (props) => {
     song3,
     time3,
   } = useContext(roponttiContext);
-  const [order, setOrder] = useState(order1);
-  const [destination, setDestination] = useState(destination1);
-  const [name, setName] = useState(name1);
-  const [song, setSong] = useState(song1);
-  const [time, setTime] = useState(time1);
+  const [order, setOrder] = useState(null);
+  const [destination, setDestination] = useState(null);
+  const [name, setName] = useState(null);
+  const [song, setSong] = useState(null);
+  const [time, setTime] = useState(null);
   useEffect(() => {
     if (chosenOne === 1) {
       setOrder(order1);
@@ -53,17 +53,20 @@ const Modal = (props) => {
       setTime(time3);
     }
   }, [chosenOne]);
+  
+  console.log(time);
   if (
     order === null ||
     destination === null ||
     name === null ||
-    song === null
+    song === null ||
+    time === null
   ) {
-    return (
-      <div>
-        <h1>Loading...</h1>
-      </div>
-    );
+    return(
+        <div>
+            <h1>Loading...</h1>
+        </div>
+    )
   }
 
   return (
