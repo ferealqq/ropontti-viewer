@@ -13,6 +13,7 @@ import songs from "./assets/songs.json";
 import { createContext } from "react";
 import Stream from "./Stream";
 import { Container, CssBaseline } from "@mui/material";
+import {  iconPerson  } from './Icon';
 
 export const roponttiContext = createContext();
 
@@ -124,12 +125,14 @@ export default function App() {
         zoom={16}
         scrollWheelZoom={false}
       >
+
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
         <Marker
           key={"Ropontti1"}
+	  icon={ iconPerson }
           position={[
             trackData.features[point1].geometry.coordinates[1],
             trackData.features[point1].geometry.coordinates[0],
@@ -143,6 +146,7 @@ export default function App() {
         ></Marker>
         <Marker
           key={"ropontti2"}
+	  icon={ iconPerson }
           position={[
             trackData.features[point2].geometry.coordinates[1],
             trackData.features[point2].geometry.coordinates[0],
@@ -156,6 +160,7 @@ export default function App() {
         ></Marker>
         <Marker
           key={"ropontti3"}
+	  icon={ iconPerson }
           position={[
             trackData.features[point3].geometry.coordinates[1],
             trackData.features[point3].geometry.coordinates[0],

@@ -1,4 +1,18 @@
-export default function Stream({ startTime = 0 }) {
+import React, { useEffect, useRef } from "react";
+
+const api = process.env.REACT_API_URL || "http://localhost:8080/stream";
+
+export default function Stream({ startTime = 0, roponttiNumber }) {
+  const url = `${api}/${roponttiNumber}`;
+  const video = useRef(null);
+
+  useEffect(() => {
+    video.current.src = url;
+    video.current.play().then(() => {
+      video.current.currentTime = startTime;
+    });
+  }, []);
+
   return (
     <video
       style={{ objectFit: "cover", width: "100%" }}
@@ -6,11 +20,8 @@ export default function Stream({ startTime = 0 }) {
       muted={true}
       autoPlay={true}
       playsInline={true}
+      ref={video}
     >
-      <source
-        src={`http://localhost:8080/video#t=${startTime}`}
-        type="video/mp4"
-      ></source>
     </video>
   );
 }
