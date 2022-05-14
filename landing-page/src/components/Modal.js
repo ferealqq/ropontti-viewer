@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext, createContext } from "react";
 import { roponttiContext } from "../App";
-
 import { Button } from "@mui/material";
 import List from "@mui/material/List";
 import { Grid } from "@mui/material";
@@ -66,6 +65,7 @@ const Modal = (props) => {
       </div>
     );
   }
+
   return (
     <Grid
       container
@@ -87,7 +87,7 @@ const Modal = (props) => {
         <List sx={{ width: "100%", bgcolor: "background.paper" }}>
           {order.map((item) => {
             // console.log(item);
-            return <Item item={item} avatar={true} />;
+            return <Item item={item} avatar={true} key={item} />;
           })}
         </List>
         <Button

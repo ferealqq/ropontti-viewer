@@ -59,15 +59,15 @@ def video_response(chunk, start, length, file_size):
 
 @app.route('/stream/1')
 def get_stream_1():
-    return video_response(*get_chunk("dallaus.mp4",*get_byte_range()))
+    return video_response(*get_chunk("Ropontti-1.mp4",*get_byte_range()))
 
 @app.route('/stream/2')
 def get_stream_2():
-    return video_response(*get_chunk("dallaus.mp4",*get_byte_range()))
+    return video_response(*get_chunk("Ropontti-2.mp4",*get_byte_range()))
 
 @app.route('/stream/3')
 def get_stream_3():
-    return video_response(*get_chunk("dallaus.mp4",*get_byte_range()))
+    return video_response(*get_chunk("Ropontti-3.mp4",*get_byte_range()))
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080, debug=True, threaded=True)
